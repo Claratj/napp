@@ -1,7 +1,5 @@
-import './App.css';
+import Router from './router/Router';
 
-function App() {
-	return <div className="App" />;
+export default function App() {
+	return <Router />;
 }
-
-export default App;
