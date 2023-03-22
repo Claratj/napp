@@ -4,21 +4,14 @@ module.exports = {
 		es2021: true,
 		node: true,
 	},
-	extends: ['plugin:react/recommended', 'eslint:recommended', 'prettier'],
+	extends: ['react-app', 'prettier'],
 	overrides: [],
-	parserOptions: {
-		ecmaVersion: 'latest',
-		ecmaFeatures: ~{
-			jsx: true,
-		},
-		sourceType: 'module',
-	},
 	plugins: ['react', 'prettier'],
 	rules: {
 		'react/react-in-jsx-scope': 'off',
 		'react/prop-types': 'off',
-		'indent': ['off', 'never'],
-		'allowIdentationTabs': 'off',
-		'prettier/prettier': 'error'
+		indent: ['off', 'never'],
+		allowIdentationTabs: 'off',
+		'prettier/prettier': 'error',
 	},
 };
