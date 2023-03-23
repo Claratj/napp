@@ -1,0 +1,80 @@
+@import '../../sass/base/variables';
+
+.Header {
+	width: 90%;
+	height: 80px;
+	margin-bottom: 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__logo {
+		height: 42px;
+		width: 42px;
+	}
+
+	&__nav {
+		display: flex;
+		align-items: flex-start;
+		gap: 60px;
+	}
+
+	&__shop {
+		position: relative;
+		background-color: $light-purple;
+		height: 60px;
+		width: 60px;
+		border-radius: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+	}
+
+	&__cart {
+		font-size: 30px;
+		color: white;
+	}
+
+	&__num {
+		position: absolute;
+		top: -8px;
+		left: 42px;
+		height: 16px;
+		width: 16px;
+		padding: 4px;
+		border-radius: 100%;
+		background-color: $gray;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+.Nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 30px;
+
+	&__link {
+		align-items: center;
+		padding: 16px 40px;
+		box-sizing: border-box;
+		color: $black;
+		font-size: 16px;
+		font-weight: 600;
+		text-decoration: none;
+
+		&:hover {
+			background-color: rgba($light-purple, 0.5);
+			border-radius: 4px;
+			color: black;
+		}
+
+		&--active {
+			color: $bright-purple;
+			border-bottom: 2px solid $bright-purple;
+		}
+	}
+}
