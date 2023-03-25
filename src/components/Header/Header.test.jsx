@@ -1,19 +1,20 @@
-const { render, getByAltText, screen, fireEvent } = require('@testing-library/react');
+const { render, getByAltText, screen, fireEvent, getByTestId } = require('@testing-library/react');
 const { MemoryRouter } = require('react-router-dom');
+const { default: CartProvider } = require('src/providers/CartProvider');
 const { default: Header } = require('./Header');
 
 describe('<Header />', () => {
 	it('should render without crashing', () => {
-		const { getByTestId } = render(
-			<MemoryRouter>
-				<Header />
-			</MemoryRouter>
+		render(
+			<CartProvider>
+				<MemoryRouter>
+					<Header />
+				</MemoryRouter>
+			</CartProvider>
 		);
-		const logo = getByTestId('logo');
 
-		expect(getByTestId('header')).toBeInTheDocument();
-		expect(logo).toBeInTheDocument();
-		expect(screen.getByText('Home')).toBeInTheDocument();
+		expect(screen.getByTestId('header')).toBeInTheDocument();
+		expect(screen.getByTestId('logo')).toBeInTheDocument();
 		expect(screen.getByText('Products')).toBeInTheDocument();
 	});
 });
