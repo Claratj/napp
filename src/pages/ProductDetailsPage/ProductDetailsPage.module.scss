@@ -1,0 +1,200 @@
+@import '../../sass/main.scss';
+
+.Details {
+	&__section {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 40px;
+		background-color: $gray;
+	}
+
+	&__back {
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		& span {
+			color: white;
+			font-size: 12px;
+		}
+	}
+
+	&__content {
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
+
+	&__photo {
+		width: fit-content;
+		height: fit-content;
+		padding: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 8px;
+
+		& img {
+			max-height: 224px;
+		}
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		background-color: $gray;
+		border-radius: 8px;
+		border: 1px solid $deep-purple;
+	}
+
+	&__description {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__title {
+		height: 50px;
+		font-size: 20px;
+		margin-bottom: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-bottom: 1px solid $deep-purple;
+		color: $deep-purple;
+	}
+
+	&__subtitle {
+		font-size: 16px;
+		padding-left: 20px;
+		margin-bottom: 10px;
+	}
+
+	&__ul {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		font-size: 14px;
+
+		& li:first-child {
+			border-top: 1px solid $deep-purple;
+		}
+	}
+
+	&__li {
+		height: 20px;
+		padding: 20px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid $deep-purple;
+
+		& p:first-child {
+			font-weight: bold;
+		}
+
+		&:hover {
+			background-color: rgba($light-purple, 0.5);
+		}
+
+		&:last-child {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+
+		&__container {
+			margin: 0 20px;
+			display: flex;
+			flex-direction: row;
+			gap: 100px;
+		}
+	}
+
+	&__select {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		font-size: 14px;
+		gap: 0.5rem;
+
+		& p {
+			font-weight: 600;
+		}
+		& span {
+			margin-left: 8px;
+		}
+	}
+
+	&__label {
+		display: flex;
+		cursor: pointer;
+	}
+
+	&__add {
+		color: #ffffff;
+		font-weight: 500;
+	}
+
+	&__action {
+		padding: 20px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+
+		p {
+			font-size: 18px;
+			font-weight: 600;
+			padding-right: 50px;
+		}
+	}
+}
+
+@media (min-width: 1024px) {
+	.Details {
+		&__section {
+			padding: 2.5rem;
+		}
+
+		&__content {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		&__photo {
+			max-width: 192px;
+			max-height: 192px;
+		}
+
+		&__info {
+			width: 400px;
+		}
+
+		&__action {
+			padding: 0 10px;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.Details {
+		&__content {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		&__photo {
+			align-items: flex-start;
+		}
+
+		&__add {
+			width: max-content;
+		}
+	}
+}
+
+@media (min-width: 375px) {
+}
