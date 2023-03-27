@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { cartContext } from 'src/providers/CartProvider';
 import { PRODUCTS_ROUTE } from 'src/router/routes';
@@ -8,9 +8,18 @@ import style from './Header.module.scss';
 import logo from './images/logo.svg';
 
 export default function Header() {
+	const [scrollNav, setScrollNav] = useState(false);
+	const changeNav = () => {
+		window.scrollY >= 80 ? setScrollNav(true) : setScrollNav(false);
+	};
+
+	useEffect(() => {
+		window.addEventListener('scroll', changeNav);
+	}, []);
+
 	const { cartValue } = useContext(cartContext);
 	return (
-		<div className={style.Header} data-testid="header">
+		<div className={scrollNav ? [`${style.Header} ${style.Header__active}`] : style.Header} data-testid="header">
 			<div className={style.Header__nav}>
 				<Link to={PRODUCTS_ROUTE}>
 					<div className={style.Header__logo}>
@@ -26,7 +35,9 @@ export default function Header() {
 				>
 					Products
 				</NavLink>
-				<Breadcrumbs />
+				<div className={style.Header__breadcrumbs}>
+					<Breadcrumbs />
+				</div>
 			</div>
 
 			<div className={style.Header__shop}>
