@@ -1,0 +1,49 @@
+@import '../../sass/base/variables';
+
+.Search {
+	display: flex;
+	flex-direction: row;
+
+	&__label {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
+	}
+
+	&__input {
+		width: 100%;
+		padding: 12px 24px;
+
+		background-color: transparent;
+		transition: transform 250ms ease-in-out;
+		font-size: 14px;
+		line-height: 18px;
+
+		color: $light-purple;
+		background-color: transparent;
+		border-radius: 50px;
+		border: 1px solid $bright-purple;
+		transition: all 250ms ease-in-out;
+
+		&::placeholder {
+			color: color($deep-purple a(0.8));
+			letter-spacing: 1.5px;
+		}
+
+		&:hover,
+		&:focus {
+			padding: 12px 0;
+			outline: 0;
+			border: 2px solid transparent;
+			border-bottom: 2px solid $bright-purple;
+			border-radius: 0;
+			background-position: 100% center;
+		}
+	}
+}
