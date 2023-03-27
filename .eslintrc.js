@@ -13,5 +13,6 @@ module.exports = {
 		indent: ['off', 'never'],
 		allowIdentationTabs: 'off',
 		'prettier/prettier': 'error',
+		'import/no-anonymous-default-export': 'off',
 	},
 };
