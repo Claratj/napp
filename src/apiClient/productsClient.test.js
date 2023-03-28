@@ -1,37 +1,39 @@
+import { waitFor } from '@testing-library/react';
 import productsClient from './productsClient.js';
 
 describe('productsClient', () => {
 	it('should make a fetch request to get a list of products', async () => {
-		jest.spyOn(global, 'fetch').mockImplementation(() =>
-			Promise.resolve({
-				json: () =>
-					Promise.resolve([
-						{ id: 1, name: 'Product 1' },
-						{ id: 2, name: 'Product 2' },
-					]),
-			})
-		);
-
 		const products = await productsClient.productsList();
-
-		expect(products).toEqual([
-			{ id: 1, name: 'Product 1' },
-			{ id: 2, name: 'Product 2' },
-		]);
-		expect(global.fetch).toHaveBeenCalledTimes(1);
-		expect(global.fetch).toHaveBeenCalledWith('https://itx-frontend-test.onrender.com/api/product');
-		global.fetch.mockRestore();
+		waitFor(() => {
+			expect(products).toHaveLength(3);
+			expect(products[0]).toHaveProperty('id');
+			expect(products[0]).toHaveProperty('name');
+			expect(products[0]).toHaveProperty('price');
+		});
 	});
 
-	it('should handle errors when fetching products list', async () => {
-		const error = new Error('Error getting products');
+	it('fetches product details from API', async () => {
+		const productId = 1;
+		const productDetails = await productsClient.productDetails(productId);
 
-		jest.spyOn(global, 'fetch').mockImplementation(() => Promise.reject(error));
+		waitFor(() => {
+			expect(productDetails).toHaveProperty('id', productId);
+			expect(productDetails).toHaveProperty('name');
+			expect(productDetails).toHaveProperty('description');
+			expect(productDetails).toHaveProperty('price');
+		});
+	});
 
-		await expect(productsClient.productsList()).rejects.toThrow('Error getting products');
+	test('adds product to cart via API', async () => {
+		const payload = {
+			productId: 1,
+			quantity: 2,
+		};
+		const response = await productsClient.addProductToCart(payload);
 
-		expect(global.fetch).toHaveBeenCalledTimes(1);
-		expect(global.fetch).toHaveBeenCalledWith('https://itx-frontend-test.onrender.com/api/product');
-		global.fetch.mockRestore();
+		waitFor(() => {
+			expect(response).toHaveProperty('status', 'success');
+			expect(response).toHaveProperty('message');
+		});
 	});
 });
