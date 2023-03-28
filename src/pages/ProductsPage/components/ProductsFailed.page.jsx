@@ -1,3 +1,3 @@
-export default function ProductsFailedPage() {
-	return <div>ProductsFailedPage</div>;
+export default function ProductsFailedPage(props) {
+	return <div>{props.serverError}</div>;
 }

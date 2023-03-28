@@ -13,7 +13,7 @@ export default function ProductsSuccessPage(props) {
 			<div className={style.Products__search}>
 				<Search placeholder={'Search'} value={querySearch} onSearchChange={(e) => handleQuerySearch(e)} />
 			</div>
-			<div className={style.Products__gallery}>
+			<div className={style.Products__gallery} data-testid="products-list">
 				{search(props.products)?.map((product) => (
 					<Item
 						key={product.id}
