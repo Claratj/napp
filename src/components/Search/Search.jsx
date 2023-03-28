@@ -14,6 +14,7 @@ export default function Search({ placeholder, value, onSearchChange }) {
 				placeholder={placeholder}
 				value={value}
 				onChange={onSearchChange}
+				data-testid="search"
 			/>
 		</div>
 	);
