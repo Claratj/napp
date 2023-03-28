@@ -1,0 +1,40 @@
+@import './variables';
+
+*,
+body,
+root {
+	font-family: $font-family;
+	color: $black;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+div {
+	box-sizing: border-box;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+li {
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	background-color: rgba($bright-purple, 0.9);
+	color: white;
+	border-radius: 8px;
+	border: 1px solid $bright-purple;
+	padding: 10px 20px;
+	margin: 10px 0;
+	cursor: pointer;
+}
